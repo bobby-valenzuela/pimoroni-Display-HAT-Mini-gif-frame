@@ -202,6 +202,7 @@ image_file = None
 current_image_list = None
 image_file_extension = None
 current_image_index = 0
+slideshow_interval = 3
 
 switch_file_list()
 display_image_by_index(0)
@@ -233,6 +234,21 @@ while True:
             disp.display(image.resize((DISPLAY_WIDTH, DISPLAY_HEIGHT)))
             frame += 1
             time.sleep(0.05)
+
+        time.sleep(slideshow_interval)
+        next_image_index = current_image_index + 1
+        
+        if(next_image_index >= len(images)):
+            if current_image_list == "gifs":
+                current_image_list = "stills"
+                images = images_stills
+            else:
+                current_image_list = "gifs"
+                images = images_gifs
+
+            display_image_by_index(0)
+        else:
+            display_image_by_index(next_image_index)
 
     except EOFError:
         frame = 0
