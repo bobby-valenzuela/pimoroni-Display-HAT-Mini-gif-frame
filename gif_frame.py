@@ -248,7 +248,7 @@ while True:
 
             display_image_by_index(0)
         else:
-            display_image_by_index(next_image_index)
+            display_image_by_index(current_image_index)
 
     except EOFError:
         frame = 0
